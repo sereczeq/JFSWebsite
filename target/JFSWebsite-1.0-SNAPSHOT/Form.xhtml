@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
+<head>
+    <title>Form</title>
+</head>
+<h:body>
+    <h:form>
+    <h:messages/>
+    <h:inputText id="name" value="#{user.firstName}" a:placeholder="What's your name?" validatorMessage="User name is required">
+        <f:validateRequired/>
+    </h:inputText>
+        <h:inputText id="email" value="#{user.email}" validatorMessage="#{user.email} is not valid">
+        <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+        </h:inputText>
+        <h:selectOneRadio value="#{user.radio}">
+        <f:selectItem itemValue="Java" itemLabel="Java"/>
+        <f:selectItem itemValue="C#" itemLabel="C#"/>
+        <f:selectItem itemValue="Python" itemLabel="Python"/>
+        </h:selectOneRadio>
+    <h:commandButton value="Sumbit" action="ResultPage"/>
+</h:form>
+</h:body>
+</html>

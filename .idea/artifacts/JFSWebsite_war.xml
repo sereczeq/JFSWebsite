@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JFSWebsite:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JFSWebsite</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="JFSWebsite-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JFSWebsite:war exploded" />
+    </root>
+  </artifact>
+</component>
