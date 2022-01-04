@@ -9,19 +9,24 @@
 </head>
 <h:body>
     <h:form>
-    <h:messages/>
-    <h:inputText id="name" value="#{user.firstName}" a:placeholder="What's your name?" validatorMessage="User name is required">
-        <f:validateRequired/>
-    </h:inputText>
+        <h:messages/>
+        <h:outputLabel for="name">name:</h:outputLabel>
+        <h:inputText id="name" value="#{user.firstName}" validatorMessage="User name is required">
+            <f:validateRequired/>
+        </h:inputText>
+        <br/>
+        <h:outputLabel for="email">Email:</h:outputLabel>
         <h:inputText id="email" value="#{user.email}" validatorMessage="#{user.email} is not valid">
-        <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+            <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)"/>
         </h:inputText>
         <h:selectOneRadio value="#{user.radio}">
-        <f:selectItem itemValue="Java" itemLabel="Java"/>
-        <f:selectItem itemValue="C#" itemLabel="C#"/>
-        <f:selectItem itemValue="Python" itemLabel="Python"/>
+            <f:selectItem itemValue="Java" itemLabel="Java"/>
+            <f:selectItem itemValue="C#" itemLabel="C#"/>
+            <f:selectItem itemValue="Python" itemLabel="Python"/>
         </h:selectOneRadio>
-    <h:commandButton value="Sumbit" action="ResultPage"/>
-</h:form>
+        <h:outputLabel for="phone">Phone:</h:outputLabel>
+        <h:inputText id="phone" value="#{user.phoneNumber}" validator="phoneValidator"/>
+        <h:commandButton value="Sumbit" action="ResultPage"/>
+    </h:form>
 </h:body>
 </html>

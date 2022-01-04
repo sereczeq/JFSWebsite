@@ -9,5 +9,6 @@
 </h1>
 <br/>
 <a href="Form.xhtml">Form</a>
+<a href="Info.xhtml">Info</a>
 </body>
 </html>
