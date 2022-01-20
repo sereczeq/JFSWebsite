@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<head>
+    <title>ChooseProducts</title>
+</head>
+<body>
+<h3>Product List</h3>
+<a href="ShowCart.xhtml">Cart</a>
+<a href="ShopLogin.xhtml">Login</a>
+<h:form prependId="false">
+    <h:selectOneRadio value="#{allItems.itemType}">
+        <!-- This will create one button for each type from allItems.itemTypes array        -->
+        <!-- itemValue is the value that will be assigned to allItems.itemType after submitting-->
+        <!-- itemLabel is the label displayed next to radio button-->
+        <f:selectItems value="#{allItems.itemTypes}"
+                       var="itemType"
+                       itemValue="#{itemType}"
+                       itemLabel="#{itemType.name()}"/>
+    </h:selectOneRadio>
+    <input type="submit" value="Apply filter"/>
+    <h:dataTable var="item" value="#{allItems.items}"
+                 border="1" cellpadding="2" cellspacing="2">
+        <h:column>
+            #{item.name}
+        </h:column>
+        <h:column>
+            #{item.price}
+        </h:column>
+        <h:column>
+            <h:commandLink value="Buy Now" action="#{shoppingCart.AddItem(item)}"/>
+        </h:column>
+    </h:dataTable>
+</h:form>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<a href="ShopChooseProducts.xhtml">Shop</a>
+<a href="ShopRegister.xhtml">Register</a>
+<h1>Login</h1>
+<h:form prependId="false" onsubmit="">
+    <h:outputLabel for="login">Login:</h:outputLabel>
+    <h:inputText id="login" value="#{account.login}"/>
+
+    <h:outputLabel for="password">Password:</h:outputLabel>
+    <h:inputText id="password" value="#{account.password}"/>
+
+    <h:commandButton value="Sumbit" action="#{accountManager.CheckAccount(account)}">
+<!--        <f:actionListener binding="#{accountManager.CheckAccount(account)}"/>-->
+    </h:commandButton>
+
+</h:form>
+
+<h1>CRUD</h1>
+<h3>Cart Info</h3>
+<h:form prependId="false">
+    <table border="1" cellpadding="2" cellspacing="2">
+        <tr>
+            <th>Delete</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Save</th>
+        </tr>
+        <ui:repeat var="item" value="#{shoppingCart.items}">
+            <tr>
+                <td align="center">
+                    <h:commandLink rendered="#{accountManager.loggedIn == true}" value="X" action="#{shoppingCart.RemoveItem(item)}">
+<!--                        <f:actionListener binding="#{accountManager.account = account}"/>-->
+                    </h:commandLink>
+                </td>
+<!--                <td>#{item.name}</td>-->
+<!--                <td>#{item.price}</td>-->
+
+                <td><h:inputText value="#{item.name}"/> </td>
+                <td><h:inputText value="#{item.price}"/> </td>
+                <td align="center">
+                    <h:commandLink rendered="#{accountManager.loggedIn == true}" value="+" action="#{shoppingCart.UpdateItem(item)}">
+                        <!--                        <f:actionListener binding="#{accountManager.account = account}"/>-->
+                    </h:commandLink>
+                </td>
+            </tr>
+        </ui:repeat>
+        <tr>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                <h:commandLink rendered="#{accountManager.loggedIn == true}" value="clear" action="#{shoppingCart.ClearCart()}"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">Total</td>
+            <td>#{shoppingCart.FullPrice()}</td>
+        </tr>
+    </table>
+    <br></br>
+
+</h:form>
+<h:form>
+    <h:outputLabel for="addName">Name:</h:outputLabel>
+    <h:inputText id="addName" value="#{item.name}"/>
+    <h:outputLabel for="addPrice">Price:</h:outputLabel>
+    <h:inputText id="addPrice" value="#{item.price}" />
+    <h:commandLink rendered="#{accountManager.loggedIn == true}" value="Add" action="#{shoppingCart.AddItem(item)}"/>
+</h:form>
+</body>
+</html>

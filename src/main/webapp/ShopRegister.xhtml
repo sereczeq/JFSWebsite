@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<head>
+    <title>Register</title>
+</head>
+<body>
+<a href="ShopLogin.xhtml">Login</a>
+
+<h1>Register</h1>
+<h:form prependId="false" onsubmit="">
+    <h:outputLabel for="login">Login:</h:outputLabel>
+    <h:inputText id="login" value="#{account.login}"/>
+
+    <h:outputLabel for="password">Password:</h:outputLabel>
+    <h:inputText id="password" value="#{account.password}"/>
+
+    <h:commandButton value="Sumbit" action="ShopLogin">
+        <f:actionListener binding="#{accountManager.CreateAccount(account)}"/>
+    </h:commandButton>
+</h:form>
+
+</body>
+</html>

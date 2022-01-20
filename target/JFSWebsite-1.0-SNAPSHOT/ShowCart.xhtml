@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <title>Cart</title>
+</head>
+<body>
+<a href="ShopChooseProducts.xhtml">Shop</a>
+<a href="ShopLogin.xhtml">Login</a>
+<h3>Cart Info</h3>
+<h:form prependId="false">
+    <table border="1" cellpadding="2" cellspacing="2">
+        <tr>
+            <th>Option</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <ui:repeat var="item" value="#{shoppingCart.items}">
+            <tr>
+                <td align="center">
+                    <h:commandLink value="X" action="#{shoppingCart.RemoveItem(item)}"/>
+                </td>
+                <td>#{item.name}</td>
+                <td>#{item.price}</td>
+            </tr>
+        </ui:repeat>
+        <tr>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                <h:commandLink value="clear" action="#{shoppingCart.ClearCart()}"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">Total</td>
+            <td>#{shoppingCart.FullPrice()}</td>
+        </tr>
+    </table>
+    <br></br>
+</h:form>
+<a href="ShopConfirmOrder.xhtml">Confirm order</a>
+
+</body>
+</html>

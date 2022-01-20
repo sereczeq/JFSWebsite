@@ -10,5 +10,7 @@
 <br/>
 <a href="Form.xhtml">Form</a>
 <a href="Info.xhtml">Info</a>
+<a href="ShopChooseProducts.xhtml">Shop</a>
+<a href="ShopLogin.xhtml">Login</a>
 </body>
 </html>
